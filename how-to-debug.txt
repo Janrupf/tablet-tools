@@ -1,0 +1,13 @@
+https://wiki.osdev.org/Debugging_UEFI_applications_with_GDB
+
+1. Load run file (no debug symbols)
+2. gdb> info files
+3. Extract start addresses of .text and .data
+4. gdb> file
+5. Calculate:
+text_addr = BASE + .text
+data_addr = BASE + .data
+6. gdb> add-symbol-file $SYMBOL_FILE $text_addr -s .data $data_addr
+7. Continue debug
+
+# TODO: automate that
